@@ -7,6 +7,20 @@ import { Component } from '@angular/core';
 })
 export class Tab3Page {
 
-  constructor() {}
+  constructor() { }
 
+  // 减少商品数量
+  removeNum() {
+
+  }
+
+  // 添加商品数量
+  addNum() {
+
+  }
+
+  // 去结算
+  payNow() {
+
+  }
 }

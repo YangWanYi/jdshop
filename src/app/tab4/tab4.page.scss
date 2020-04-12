@@ -1,0 +1,38 @@
+ion-item-divider{
+    min-height: 0.5rem;
+}
+.purple{
+    color: purple;
+}
+.user_top{
+    background: url('/assets/user_bg.jpg') no-repeat center center / 100% 100%;
+    color: #fff;
+    padding: 3rem 1rem;
+    display: flex;
+    align-items: center;
+    .user_left{
+        width: 5rem;
+        img{
+            height: 5rem;
+            width: 5rem;
+            border-radius: 5rem;
+        }
+    }
+    .user_right{
+        flex: 1;
+        padding-left: 1rem;
+        font-size: 1.4rem;
+        ion-icon{
+            position: relative;
+            top: 2rem;
+        }
+    }
+}
+.user_list{
+    ion-icon{
+        font-size: 1.8rem;
+    }
+    ion-label{
+        font-size: 1.6rem;
+    }
+}
