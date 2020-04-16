@@ -1,3 +1,17 @@
+.toolbar_tab {
+    height: 3rem;
+    align-items: center;
+    display: flex;
+    font-size: 1.6rem;
+    border-top: 1px solid #eee;
+    div {
+        text-align: center;
+        flex: 1;
+    }
+    .active{
+        color: red;
+    }
+}
 .search_content {
     .search_list {
         font-size: 1.6rem;
@@ -22,15 +36,10 @@
         }
     }
 }
-
-.toolbar_tab{
-    height: 3rem;
-    align-items: center;
-    display: flex;
-    font-size: 1.6rem;
-    border-top: 1px solid #eee;
-    div{
-        text-align: center;
-        flex: 1;
-    }
+.noMoreData{
+    text-align: center;
+    color: #ddd;
+    font-size: 1.3rem;
+    height: 2rem;
+    line-height: 2rem;
 }

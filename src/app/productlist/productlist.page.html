@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (tap)="goBack()" expand="block" fill="clear" shape="round">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-searchbar placeholder="请输入关键词" (ionChange)="onSearchChange($event)" animated></ion-searchbar>
+    <ion-buttons slot="end">
+      <ion-button (tap)="doSearch()" color="parmary">
+        搜索
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar>
+    <div class="toolbar_tab">
+      <div *ngFor="let item of subToolBarList" (click)="changeSubMenu(item);" [ngClass]="{active: selectedSubMenuId==item.id}" >
+        {{item.title}}
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="list_content">
+    <ion-list>
+      <ion-item *ngFor="let item of pList">
+        <ion-thumbnail slot="start">
+          <img [src]="config.domain+item.s_pic" />
+        </ion-thumbnail>
+        <ion-label>
+          <h3>{{item.title}}</h3>
+          <p><span class="price">￥{{item.price}}</span></p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+    <div *ngIf="noMore" class="noMoreData">------------别拉啦，没有了------------</div>
+    <ion-infinite-scroll threshold="25%" position="bottom" (ionInfinite)="listProduct($event)" #loadMore>
+      <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="努力加载中...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </div>
+</ion-content>

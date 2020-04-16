@@ -6,10 +6,20 @@
     height: 100%;
     width: 10rem;
     overflow-y: auto;
+    background: #eee;
+    ion-item{
+      --background: #eee;
+    }
+    ion-item.active{
+      --background: #fff;
+    }
   }
   .cate_right {
     height: 100%;
     flex: 1;
     overflow-y: auto;
+    p{
+      text-align: center;
+    }
   }
 }

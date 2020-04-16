@@ -83,10 +83,27 @@ html {
         clear: both;
     }
 }
-ul,ol{
+ul,
+ol {
     list-style: none;
 }
 
-.price{
+.price {
     color: red;
+}
+
+// 消息
+.msg {
+    position: relative;
+    .badge {
+        position: absolute;
+        top: -4px;
+        right: -4px;
+        font-size: 1rem;
+    }
+}
+
+.commonBtn{
+    width: 80%;
+    margin: 0 auto;
 }

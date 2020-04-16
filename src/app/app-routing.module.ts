@@ -9,6 +9,26 @@ const routes: Routes = [
   {
     path: 'search',
     loadChildren: () => import('./search/search.module').then( m => m.SearchPageModule)
+  },
+  {
+    path: 'registerstep1',
+    loadChildren: () => import('./registerstep1/registerstep1.module').then( m => m.Registerstep1PageModule)
+  },
+  {
+    path: 'registerstep2',
+    loadChildren: () => import('./registerstep2/registerstep2.module').then( m => m.Registerstep2PageModule)
+  },
+  {
+    path: 'registerstep3',
+    loadChildren: () => import('./registerstep3/registerstep3.module').then( m => m.Registerstep3PageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'productlist',
+    loadChildren: () => import('./productlist/productlist.module').then( m => m.ProductlistPageModule)
   }
 ];
 @NgModule({

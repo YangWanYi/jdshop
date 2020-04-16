@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>手机快速注册</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="phone_input">
+    <input type="number" name="phonenum" id="phonenum" placeholder="请输入手机号">
+  </div>
+  <ion-button expand="block" class="commonBtn" color="danger" [routerLink]="['/registerstep2']">
+    下一步
+  </ion-button>
+</ion-content>

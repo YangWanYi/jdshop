@@ -1,9 +1,66 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>search</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (tap)="goBack()" expand="block" fill="clear" shape="round">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-searchbar placeholder="请输入关键词" (ionChange)="onSearchChange($event)" animated></ion-searchbar>
+    <ion-buttons slot="end">
+      <ion-button (tap)="doSearch()" color="parmary">
+        搜索
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar *ngIf="!showSearchTip">
+    <div class="toolbar_tab">
+      <div>综合</div>
+      <div>销量</div>
+      <div>价格</div>
+      <div>筛选</div>
+    </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <div class="search_content" *ngIf="showSearchTip" padding>
+    <div class="hotlist">
+      <h3 class="search_list">热搜</h3>
+      <p>
+        <span>女装</span>
+        <span>男装</span>
+        <span>家居</span>
+        <span>电器</span>
+        <span>美肤</span>
+        <span>鞋子</span>
+      </p>
+    </div>
+    <div class="history">
+      <h3 class="search_list">历史搜索</h3>
+      <ion-list lines="full">
+        <ion-item>
+          男装
+        </ion-item>
+        <ion-item>
+          电器
+        </ion-item>
+        <ion-item>
+          美肤
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+  <div class="list_content" *ngIf="!showSearchTip">
+    <ion-list>
+      <ion-item *ngFor="let item of pList">
+        <ion-thumbnail slot="start">
+         <img [src]="item.src" />
+        </ion-thumbnail>
+        <ion-label> 
+          <h3>{{item.title}}</h3>
+          <p><span class="price">￥{{item.price}}</span></p>  
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
 </ion-content>

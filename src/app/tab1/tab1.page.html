@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <img src="assets/scan.png" />
     </ion-buttons>
-    <ion-searchbar placeholder="请输入关键词" animated></ion-searchbar>
+    <ion-searchbar placeholder="请输入关键词" animated (tap)="toSearchPage()"></ion-searchbar>
     <ion-buttons slot="end" class="msg">
       <img src="assets/msg.png" />
       <ion-badge color="danger" class="badge">8</ion-badge>
@@ -15,7 +15,7 @@
   <!-- 轮播图 -->
   <ion-slides [options]="slideOpts" #theSlide (ionSlideTouchEnd)="slideTouchEnd()">
     <ion-slide *ngFor="let item of slideList">
-      <img [src]=item />
+      <img [src]="config.domain+item.pic" />
     </ion-slide>
   </ion-slides>
 
@@ -23,8 +23,7 @@
   <div class="hotList">
     <ul class="clearfix" [ngStyle]="{width: hotListWidth}">
       <li *ngFor="let item of hotList">
-        <img [src]="item.src" />
-        <p>{{item.title}}</p>
+        <img [src]="config.domain+item.s_pic" [alt]="item.title" [title]="item.title"/>
       </li>
     </ul>
   </div>
@@ -34,7 +33,7 @@
     <ion-grid fixed>
       <ion-row>
         <ion-col size="6" *ngFor="let item of pList">
-          <img [src]="item.src" />
+          <img [src]="config.domain+item.s_pic" />
           <p>{{item.title}}</p>
         </ion-col>
       </ion-row>

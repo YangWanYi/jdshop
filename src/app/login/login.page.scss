@@ -1,0 +1,20 @@
+.login_logo{
+    text-align: center;
+    align-items: center;
+    img{
+        width: 10rem;
+        height: 10rem;
+        border-radius: .5rem;
+    }
+}
+ion-toolbar{
+    --border-color: #fff;
+}
+.login_info{
+    margin: 3rem 0rem;
+}
+.login_info{
+    ion-input,span{
+        font-size: 1.4rem;
+    }
+}

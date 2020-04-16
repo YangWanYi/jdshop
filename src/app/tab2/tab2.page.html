@@ -1,25 +1,30 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
+    <ion-buttons slot="start">
+      <img src="assets/scan.png" />
+    </ion-buttons>
+    <ion-searchbar placeholder="请输入关键词" animated (tap)="toSearchPage()"></ion-searchbar>
+    <ion-buttons slot="end" class="msg">
+      <img src="assets/msg.png" />
+      <ion-badge color="danger" class="badge">8</ion-badge>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div class="cate_content">
     <div class="cate_left">
-      <ion-list *ngFor="let item of lCateList" lines="full">
-        <ion-item>
-          {{item}}
+      <ion-list *ngFor="let item of lCateList" lines="full" (tap)="listDataByItemId(item._id);">
+        <ion-item [ngClass]="{'active': selectedId==item._id}">
+          {{item.title}}
         </ion-item>
       </ion-list>
     </div>
     <div class="cate_right">
       <ion-grid fixed>
         <ion-row>
-          <ion-col size="6" *ngFor="let item of rCateList">
-            <img [src]="item.src" />
+          <ion-col size="6" *ngFor="let item of rCateList" [routerLink]="['/productlist']" [queryParams]="{cid:item._id}">
+            <img [src]="config.domain+item.pic" />
             <p>{{item.title}}</p>
           </ion-col>
         </ion-row>

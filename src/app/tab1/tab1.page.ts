@@ -1,4 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
+import { NavController } from '@ionic/angular';
+import { CommonService } from '../services/common.service';
 
 @Component({
   selector: 'app-tab1',
@@ -10,6 +12,7 @@ export class Tab1Page {
   public hotList: any[] = [];
   public pList: any[] = [];
   public hotListWidth: any = '400px';
+  public config: any = {};
   @ViewChild('theSlide', { static: true }) theSlide: any;
   slideOpts = {
     initialSlide: 0,
@@ -19,29 +22,49 @@ export class Tab1Page {
       delay: 5000,
     },
   };
-  constructor() {
-    console.log(this.theSlide);
-    for (let index = 1; index < 4; index++) {
-      this.slideList.push(`assets/slide0${index}.png`);
-    }
-    for (let index = 1; index < 10; index++) {
-      this.hotList.push({
-        src: `assets/0${index}.jpg`,
-        title: `第${index}个`
-      });
-    }
-    this.hotListWidth = this.hotList.length * 9 + 'rem';
-    for (let index = 1; index < 13; index++) {
-      this.pList.push({
-        src: `assets/list${index}.jpg`,
-        title: `第${index}个`
-      });
-    }
+  constructor(public navController: NavController, public common: CommonService) {
+    this.config = this.common.config;
+  }
+  // tslint:disable-next-line:use-lifecycle-interface
+  ngOnInit() {
+    this.getSlidesList();
+    this.getHotList();
+    this.getPList();
+  }
+
+  // 获取轮播图
+  getSlidesList() {
+    const url = 'api/focus';
+    this.common.ajaxGet(url).then((res: any) => {
+      this.slideList = res.result;
+    });
+  }
+
+  // 获取猜你喜欢
+  getHotList() {
+    const url = 'api/plist?is_hot=1';
+    this.common.ajaxGet(url).then((res: any) => {
+      this.hotList = res.result;
+      this.hotListWidth = this.hotList.length * 9 + 'rem';
+    });
+  }
+
+  // 获取商品列表
+  getPList() {
+    const url = 'api/plist?is_best=1';
+    this.common.ajaxGet(url).then((res: any) => {
+      this.pList = res.result;
+    });
   }
 
   slideTouchEnd() {
     console.log(this.theSlide);
     this.theSlide.startAutoplay();
+  }
+
+  // 跳转到搜索页面
+  toSearchPage() {
+    this.navController.navigateForward('/search');
   }
 
 }
